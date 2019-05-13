@@ -62,13 +62,22 @@ totalAll = () => {
 
   }, () => {
 
-    const percent = Math.round((this.state.exp / this.state.inc) * 100);
+    let percent = '';
+
+    if(this.state.exp) {
+
+      percent = Math.round((this.state.exp / this.state.inc) * 100);
+    } else {
+      percent = 0;
+    }
+
+
+  
 
     this.setState({
       percent,
     })
 
-    console.log(percent);
 
   })
 
@@ -104,6 +113,39 @@ totalAll = () => {
 
 }
 
+removeItem = (i, type) => {
+
+
+  if(type === 'exp') {
+
+      const newArr = [ ...this.state.newExp];
+      const exp = this.state.exp - this.state.newExp[i].amount;
+      const total = this.state.total + this.state.newExp[i].amount;
+
+
+      newArr.splice(i, 1);
+
+      this.setState({
+        newExp: newArr,
+        exp,
+        total,
+      })
+
+  } else {
+
+    const newArr = [ ...this.state.newInc];
+
+    newArr.splice(i, 1);
+
+    this.setState({
+      newInc: newArr,
+    })
+
+  }
+
+
+}
+
 
   render() {
 
@@ -118,9 +160,22 @@ totalAll = () => {
         </div>
         <div className="bottom">
           <AddItem createInc={this.createInc} createExp={this.createExp}/>
-          <div className="container clearfix">           
-            <NewIncome/>   
-            <NewExpense/>                
+          <div className="container clearfix">
+          <div className="income">
+          <h2 className="icome__title">Income</h2>
+            {Object.keys(this.state.newInc).map((item, index) => (
+    
+                <NewIncome key={index} removeItem={this.removeItem} amount={this.state.newInc[item].amount} desc={this.state.newInc[item].desc} />  
+
+            ))}    
+        </div>       
+
+        <div className="expenses">
+        <h2 className="expenses__title">Expenses</h2> 
+            {Object.keys(this.state.newExp).map((item, index) => (
+              <NewExpense  key={index} index={index} removeItem={this.removeItem} amount={this.state.newExp[item].amount} desc={this.state.newExp[item].desc} />   
+            ))}  
+            </div>             
           </div>
         </div>
       </div>

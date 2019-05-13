@@ -24,7 +24,7 @@ class AddItem extends React.Component {
         if(this.state.type === 'inc') {
             const inc = {
                 desc: this.descRef.current.value,
-                amount: this.amountRef.current.value,
+                amount: parseInt(this.amountRef.current.value),
             }
 
         this.props.createInc(inc);
@@ -33,7 +33,7 @@ class AddItem extends React.Component {
     
             const exp = {
                 desc: this.descRef.current.value,
-                amount: this.amountRef.current.value,
+                amount:  parseInt(this.amountRef.current.value),
             }
             this.props.createExp(exp);
         }

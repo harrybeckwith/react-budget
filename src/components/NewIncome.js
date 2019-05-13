@@ -1,38 +1,24 @@
 import React from 'react'
 
-const NewIcome = () => {
+const NewIcome = (props) => {
+
     return (
-        <div className="income">
-        <h2 className="icome__title">Income</h2>
-        
+    
         <div className="income__list">
            
-          
             <div className="item clearfix" id="income-0">
-                <div className="item__description">Salary</div>
+                <div className="item__description">{props.desc}</div>
                 <div className="right clearfix">
-                    <div className="item__value">+ 2,100.00</div>
+                    <div className="item__value">+ {props.amount}</div>
                     <div className="item__delete">
-                        <button className="item__delete--btn">
+                        <button className="item__delete--btn" onClick={()=>props.removeItem(props.index, 'inc')}>
                             <i className="ion-ios-close-outline"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            
-            <div className="item clearfix" id="income-1">
-                <div className="item__description">Sold car</div>
-                <div className="right clearfix">
-                    <div className="item__value">+ 1,500.00</div>
-                    <div className="item__delete">
-                        <button className="item__delete--btn"><i className="ion-ios-close-outline"></i></button>
-                    </div>
-                </div>
+
             </div>
-    
-            
-        <div className="item clearfix" id="inc-0"> <div className="item__description">ds</div><div className="right clearfix"><div className="item__value">+ 44.00</div><div className="item__delete"><button className="item__delete--btn"><i className="ion-ios-close-outline"></i></button></div></div></div></div>
-    </div>
     )
 }
 
