@@ -6,7 +6,7 @@ const Expense = (props) => {
                     <div className="budget__expenses--text">Expenses</div>
                     <div className="right clearfix">
                         <div className="budget__expenses--value">- {props.exp}</div>
-                        <div className="budget__expenses--percentage">---</div>
+                        <div className="budget__expenses--percentage">{props.percent}%</div>
                     </div>
         </div>
     )

@@ -15,7 +15,8 @@ class App extends React.Component {
       inc:  0,
       exp: 0,
       newInc: [],
-      newExp: []
+      newExp: [],
+      percent: 0,
   }
 
 createItem = (item, stateKey) => {
@@ -55,10 +56,20 @@ totalAll = () => {
 
   const total = parseInt(this.state.inc - this.state.exp);
 
-  console.log(total);
 
   this.setState({
     total,
+
+  }, () => {
+
+    const percent = Math.round((this.state.exp / this.state.inc) * 100);
+
+    this.setState({
+      percent,
+    })
+
+    console.log(percent);
+
   })
 
 }
@@ -102,7 +113,7 @@ totalAll = () => {
           <div className="budget">
             <Available total={this.state.total} />
             <Income inc={this.state.inc} />
-            <Expense exp={this.state.exp}/>
+            <Expense exp={this.state.exp}  percent ={this.state.percent}/>
           </div>
         </div>
         <div className="bottom">

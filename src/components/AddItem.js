@@ -21,7 +21,6 @@ class AddItem extends React.Component {
 
     createType = () => {
 
-
         if(this.state.type === 'inc') {
             const inc = {
                 desc: this.descRef.current.value,
@@ -37,11 +36,9 @@ class AddItem extends React.Component {
                 amount: this.amountRef.current.value,
             }
             this.props.createExp(exp);
-        
         }
 
     }
-
 
 
     render() {
