@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Available = () => {
+const Available = (props) => {
     return (
         <div>
             <div className="budget__title">
                 title 
             </div>
             <div className="budget__value">
-                - 0.00 
+                {props.total}
             </div>
           
         </div>

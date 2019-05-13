@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Income = () => {
+const Income = (props) => {
     return (
              <div className="budget__income clearfix">
                     <div className="budget__income--text">Income</div>
                     <div className="right">
-                        <div className="budget__income--value">+ 0.00</div>
+                        <div className="budget__income--value">+ {props.inc}</div>
                         <div className="budget__income--percentage">&nbsp;</div>
                     </div>
                 </div>
